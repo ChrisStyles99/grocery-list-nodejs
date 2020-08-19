@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> <%= title %> </title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  
+  <div class="add-product">
+    <form action="/" method="POST">
+      <h1>Add a product</h1>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="title" autocomplete="false" autofocus>
+      <input type="submit" value="Add Product">
+    </form>
+  </div>
+
+  <div class="product-list">
+    <h1>Products</h1>
+    <ul>
+      <% products.forEach(product => { %> 
+      <li class="product">
+        <% if (product.done === true) { %>
+          <a class="done"><%= product.title %></a>
+        <% } else { %>
+          <a data-doc="<%=product._id%>"><%= product.title %></a>
+        <% } %> 
+        <a class="delete-btn" data-doc="<%=product._id%>">Delete</a>
+      </li>
+      <% }); %> 
+    </ul>
+  </div>
+
+  <script>
+    const trashCan = document.querySelectorAll('.delete-btn');
+    const product = document.querySelectorAll('.product');
+
+    trashCan.forEach((el) => {
+      el.addEventListener('click', (elem) => {
+        const endPoint = `/${elem.target.dataset.doc}`;
+
+        fetch(endPoint, {
+          method: 'DELETE'
+        })
+          .then((response) => response.json())
+          .then(data => window.location.href = data.redirect)
+          .catch(err => console.log(err));
+      });
+    });
+
+    product.forEach((el) => {
+      el.addEventListener('click', (elem) => {
+        elem.target.classList.add('active');
+        console.log(elem);
+        const endPoint = `/${elem.target.dataset.doc}`;
+
+        fetch(endPoint, {
+          method: 'PUT'
+        })
+          .then(response => response.json())
+          .then(data => window.location.href = data.redirect)
+          .catch(err => console.log(err));
+      });
+    });
+  </script>
+</body>
+</html>

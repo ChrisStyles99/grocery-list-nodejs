@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #2193b0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.add-product {
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.add-product h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.add-product form {
+  background-color: #fff;
+  box-shadow: 2px 4px 8px 2px rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  text-align: center;
+  border-radius: 24px;
+}
+
+.add-product form h1 {
+  color: #000;
+}
+
+.add-product form label {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.add-product form input {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.add-product form input[type="submit"] {
+  border-radius: 12px;
+  border: none;
+  background-color: #262626;
+  color: #fff;
+  cursor: pointer;
+}
+
+.product-list {
+  background-color: #fff;
+  width: 75%;
+  margin: auto;
+  box-shadow: 2px 4px 8px 2px rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.product-list h1 {
+  text-align: center;
+}
+
+.product-list ul {
+  list-style-type: none;
+  margin: auto;
+  width: 100%;
+}
+
+.product-list ul li {
+  width: 100%;
+  margin: 10px 0;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-bottom: 1px solid #000;
+  position: relative;
+  left: 0px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.done {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.product-list ul li:first-child {
+  border-top: 1px solid #000;
+}
+
+.delete-btn {
+  color: #000;
+  float: right;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #eb5050;
+  padding: 0 10px;
+  border-radius: 4px;
+  transition: 0.3s ease all;
+}
+
+.delete-btn:hover {
+  background-color: #fa8c8c;
+  transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+}
